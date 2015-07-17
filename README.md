@@ -6,5 +6,4 @@ My Dotfiles
 
 ## Installation
 
-    git clone https://github.com/mikemackintosh/dotfiles $HOME/.dotfiles
-    $HOME/.dotfiles/install
+    curl -s https://raw.githubusercontent.com/mikemackintosh/dotfiles/master/install | bash
