@@ -1,0 +1,5 @@
+#!/bin/bash
+
+git clone https://github.com/mikemackintosh/dotfiles $HOME/.dotfiles
+cp .bash_profile .bash_profile.orig
+ln -s $HOME/.dotfiles/bash_profile.sh $HOME/.bash_profile
