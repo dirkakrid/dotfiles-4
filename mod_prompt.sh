@@ -36,7 +36,12 @@ function prompt() {
 
     export PATH
 
-    PS1=$(printf "%*s\r%s\n\[$SPLG_PURPLE\]\$\[$CLEAR\] " "$(($(tput cols)+${compensate}))" "$STATUS $(prompt_right)" "$(prompt_left)")
+    PROMPT_CHAR='$'
+    if [ $USER == 'root' ]; then
+      PROMPT_CHAR='#'
+    fi
+
+    PS1=$(printf "%*s\r%s\n\[$SPLG_PURPLE\]$PROMPT_CHAR\[$CLEAR\] " "$(($(tput cols)+${compensate}))" "$STATUS $(prompt_right)" "$(prompt_left)")
 }
 PROMPT_COMMAND=prompt
 
