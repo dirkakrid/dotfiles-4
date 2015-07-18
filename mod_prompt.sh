@@ -8,8 +8,11 @@ function prompt_right() {
 function prompt_left() {
   #CPATH="$SPLG_DGREY$(dirname $PWD)/$SPLG_ORANGE$(basename $PWD)"
   #echo -e "$SPLG_LBLUE\u$SPLG_LGREY@$SPLG_DBLUE\h $SPLG_PINK[$CPATH$SPLG_PINK]"
-
-  echo -e "\[$SPLG_LBLUE\]\u\[$SPLG_LGREY\] \[$SPLG_ORANGE\]$(basename \\w) $(git_branch)"
+  COLOR=$SPLG_LBLUE
+  if [ $USER == 'root' ]; then
+    COLOR=$SPLG_PINK
+  fi
+  echo -e "\[$COLOR\]\u\[$SPLG_LGREY\] \[$SPLG_ORANGE\]$(basename \\w) $(git_branch)"
 }
 
 function prompt() {
@@ -19,7 +22,7 @@ function prompt() {
     if [ $EXIT != 0 ]; then
       STATUS="👎 "
     fi
-    
+
     export GOPATH="${HOME}/gopath"
     unset PATH
     PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
