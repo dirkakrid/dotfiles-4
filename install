@@ -11,7 +11,7 @@ fi
 cp $HOME/.bash_profile $HOME/.bash_profile.orig
 
 # Get readlink
-`readlink $HOME/.bash_profile | grep .dotfiles/bash_profile.sh`
+`readlink $HOME/.bash_profile | grep .dotfiles/bash_profile.sh > /dev/null`
 BASH=$?
 if [ $BASH == 1 ]; then
   ln -s $HOME/.dotfiles/bash_profile.sh $HOME/.bash_profile
