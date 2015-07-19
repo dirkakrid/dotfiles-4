@@ -27,6 +27,7 @@ function prompt() {
     unset PATH
     PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     PATH="/usr/local/sbin:$PATH"
+    PATH="$HOME/bin:$PATH"
     PATH="~/Library/Android/sdk/platform-tools:$PATH"
     PATH="${GOPATH}/bin:/usr/local/opt/go/libexec/bin:/usr/local/bin:$PATH"
 

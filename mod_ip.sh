@@ -14,6 +14,6 @@ function ip() {
     return
   fi
 
-  ifconfig $1 | awk '{print $2}'
+  ifconfig $1 | grep inet | grep -v inet6 | awk '{print $2}'
 
 }
