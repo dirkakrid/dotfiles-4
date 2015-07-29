@@ -19,5 +19,5 @@ function rand {
 # Find in file
 function fif {
     echo "Beginning Search For: ${1}"
-    find . -type f -exec grep -Hn --color $1 {} \;| sed "s/^\(.*\):/$(printf $SPLG_PURPLE)\1$(printf $CLEAR):/"
+    find . -type f -exec grep -Hn --color $1 {} \;| sed "s/^\([^:]*\):\([^:]*\)\(.*\)$/$(printf $SPLG_PURPLE)\1$(printf $CLEAR):$(printf $SPLG_GREEN)\2$(printf $CLEAR)$(printf $SPLG_LBLUE)\3$(printf $CLEAR)/"
 }
