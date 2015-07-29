@@ -18,10 +18,18 @@ fi
 if [ -f $HOME/.bash_profile ]; then
   cp $HOME/.bash_profile $HOME/.bash_profile.orig
 fi
+if [ -f $HOME/.atom ]; then
+  cp $HOME/.atom $HOME/.atom.orig
+fi
+if [ -f $HOME/.gitconfig ]; then
+  cp $HOME/.gitconfig $HOME/.gitconfig.orig
+fi
 
 # Get readlink
 `readlink $HOME/.bash_profile | grep .dotfiles/bash_profile.sh > /dev/null`
 BASH=$?
 if [ $BASH == 1 ]; then
   ln -s $HOME/.dotfiles/bash_profile.sh $HOME/.bash_profile
+  ln -s $HOME/.dotfiles/atom $HOME/.atom
+  ln -s $HOME/.dotfiles/gitconfig $HOME/.gitconfig
 fi

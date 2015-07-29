@@ -1,0 +1,45 @@
+[branch]
+    autosetuprebase = always
+[pull]
+    rebase = true
+[format]
+    signoff = true
+[github]
+    user = mikemackintosh
+[grep]
+    linenumber = true
+[push]
+    default = simple
+[include]
+    path = .private/git/config
+[color]
+    ui = auto
+[merge]
+    ff = false
+    tool = vimdiff
+[alias]
+    d = diff --patience
+    br = branch
+    ci = commit -a
+    co = checkout
+    st = status
+    su = submodule update
+    si = submodule init
+    up = pull
+    upstream = remote add upstream
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[core]
+    editor = sublime
+    pager = lv -c
+[pager]
+    log = diff-highlight | less
+    show = diff-highlight | less
+    diff = diff-highlight | less
+[url "ssh://git@github.com/"]
+    insteadOf = gh:
+    insteadOf = ghub:
+    insteadOf = github:
+    insteadOf = https://github.com/
+    insteadOf = http://github.com/
+  insteadOf = https://github.com/

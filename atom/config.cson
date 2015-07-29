@@ -1,0 +1,24 @@
+"*":
+  "exception-reporting":
+    userId: "28faf869-7e63-a4e1-8173-3ec640b14353"
+  welcome:
+    showOnStartup: false
+  core:
+    disabledPackages: [
+      "vim-mode"
+      "merge-conflicts"
+    ]
+  editor:
+    invisibles: {}
+    fontFamily: "Ubuntu Mono"
+    scrollPastEnd: true
+    showIndentGuide: true
+    lineHeight: 1.2
+    fontSize: 10
+  minimap:
+    plugins:
+      "find-and-replace": true
+    absoluteMode: true
+  "go-plus":
+    goPath: "/Users/splug/gopath"
+  "one-dark-ui": {}
