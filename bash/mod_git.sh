@@ -21,9 +21,12 @@ function git_branch {
     fi
 }
 
-# Git
-alias pp='git pull --rebase && git push'
-
 function branch {
     git symbolic-ref --short HEAD
 }
+
+# Git
+alias pp='git pull --rebase && git push'
+alias gc='git clone'
+alias gs='git status'
+alias gl='git lg'

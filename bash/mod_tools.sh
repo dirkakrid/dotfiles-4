@@ -5,6 +5,6 @@ function ze {
   zip -er protected.zip $2
 }
 
-function a {
+function ar {
   mv {,archive-}$1
 }
