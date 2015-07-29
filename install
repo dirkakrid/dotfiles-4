@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Install dotfiles
 if [ ! -d $HOME/.dotfiles ]; then
   git clone https://github.com/mikemackintosh/dotfiles $HOME/.dotfiles
 else
@@ -7,8 +8,16 @@ else
   git pull --rebase
 fi
 
+# Create private dir
+if [ -d "${HOME}/.private/" ]; then
+  mkdir $HOME/.private
+  touch $HOME/.private/nil
+fi
+
 # Backup
-cp $HOME/.bash_profile $HOME/.bash_profile.orig
+if [ -f $HOME/.bash_profile ]; then
+  cp $HOME/.bash_profile $HOME/.bash_profile.orig
+fi
 
 # Get readlink
 `readlink $HOME/.bash_profile | grep .dotfiles/bash_profile.sh > /dev/null`
