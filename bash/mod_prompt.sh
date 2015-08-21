@@ -29,7 +29,7 @@ function prompt() {
     PATH="/usr/local/sbin:$PATH"
     PATH="$HOME/bin:$PATH"
     PATH="~/Library/Android/sdk/platform-tools:$PATH"
-    PATH="${GOPATH}/bin:/usr/local/opt/go/libexec/bin:/usr/local/bin:$PATH"
+    PATH="/usr/local/opt/go/libexec/bin:/usr/local/bin:$PATH:${GOPATH}/bin"
 
     if [ -d ".chef" ]; then
       PATH="$HOME/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/bin:/opt/chefdk/embedded/bin:$PATH"

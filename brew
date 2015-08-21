@@ -1,0 +1,35 @@
+#!/bin/bash
+
+HAS_BREW=$(which brew)
+if [ $? -eq 1 ]; then
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+ruby -e '
+%w{go
+sqlite
+vim
+libarchive
+ssh-copy-id
+boot2docker
+awscli
+jq
+jp2a
+the_silver_searcher
+bash-completion
+enchant
+wget
+figlet
+brew-cask
+coreutils
+tmate
+ant
+tmux
+autoconf
+socat
+gnupg
+nikto
+sqlmap
+nmap}.each do |p|
+  exec("brew install #{p}")
+done'

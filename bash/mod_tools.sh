@@ -10,5 +10,11 @@ function ar {
 }
 
 if [ -f $(brew --prefix)/etc/bash_completion  ]; then
-   . $(brew --prefix)/etc/bash_completion
- fi
+ . $(brew --prefix)/etc/bash_completion
+fi
+
+function p2j() {
+ FILENAME=$1
+ OUTFILE=$(echo $1|cut -d'.' -f 1)
+ sips -s format jpeg $FILENAME --out $OUTFILE.jpg
+}
