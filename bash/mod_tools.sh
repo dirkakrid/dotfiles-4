@@ -9,8 +9,11 @@ function ar {
   mv {,archive-}$1
 }
 
-if [ -f $(brew --prefix)/etc/bash_completion  ]; then
- . $(brew --prefix)/etc/bash_completion
+HAS_BREW=$(which brew)
+if [ $? -eq 1 ]; then
+  if [ -f $(brew --prefix)/etc/bash_completion  ]; then
+   . $(brew --prefix)/etc/bash_completion
+  fi
 fi
 
 function p2j() {
