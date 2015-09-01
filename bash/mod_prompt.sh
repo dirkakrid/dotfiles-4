@@ -2,7 +2,7 @@
 
 function prompt_right() {
   #echo -e "$SPLG_ORANGE[$SPLG_PINK\A$SPLG_ORANGE]"
-  echo -e "\[$SPLG_ORANGE\][\[$SPLG_PINK\]\A\[$SPLG_ORANGE\]]"
+  echo -e "\[$SPLG_ORANGE\][\[$SPLG_PURPLE\]\#\[$SPLG_ORANGE\]|\[$SPLG_PINK\]\A\[$SPLG_ORANGE\]]"
 }
 
 function prompt_left() {
@@ -17,7 +17,7 @@ function prompt_left() {
 
 function prompt() {
     local EXIT="$?"
-    compensate=45
+    compensate=79
     STATUS="👍 "
     if [ $EXIT != 0 ]; then
       STATUS="👎 "
@@ -37,12 +37,13 @@ function prompt() {
 
     export PATH
 
+    HOST=$(hostname)
     PROMPT_CHAR='$'
     if [ $USER == 'root' ]; then
       PROMPT_CHAR='#'
     fi
 
-    PS1=$(printf "%*s\r%s\n\[$SPLG_PURPLE\]$PROMPT_CHAR\[$CLEAR\] " "$(($(tput cols)+${compensate}))" "$STATUS $(prompt_right)" "$(prompt_left)")
+    PS1=$(printf "%*s\r%s\n\[$SPLG_DGREY\]$HOST\[$CLEAR\] \[$SPLG_PURPLE\]\[$PROMPT_CHAR\]\[$CLEAR\] " "$(($(tput cols)+${compensate}))" "\[$STATUS\] $(prompt_right)" "$(prompt_left)")
 }
 PROMPT_COMMAND=prompt
 
