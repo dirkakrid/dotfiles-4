@@ -10,3 +10,7 @@ function dotfiles {
   cd ~/.dotfiles
   atom .
 }
+
+function update-dotfiles {
+  cd ~/.dotfiles && git stash && git pull && reload && cd -
+}
