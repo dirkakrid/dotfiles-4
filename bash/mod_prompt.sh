@@ -43,7 +43,7 @@ function prompt() {
       PROMPT_CHAR='#'
     fi
 
-    PS1=$(printf "%*s\r%s\n\[$SPLG_DGREY\]$HOST\[$CLEAR\] \[$SPLG_PURPLE\]\[$PROMPT_CHAR\]\[$CLEAR\] " "$(($(tput cols)+${compensate}))" "\[$STATUS\] $(prompt_right)" "$(prompt_left)")
+    PS1=$(printf "%*s\r%s\n\[$SPLG_DGREY\]$HOST\[$CLEAR\] \[$SPLG_PURPLE\]$PROMPT_CHAR\[$CLEAR\] " "$(($(tput cols)+${compensate}))" "\[$STATUS\] $(prompt_right)" "$(prompt_left)")
 }
 PROMPT_COMMAND=prompt
 
