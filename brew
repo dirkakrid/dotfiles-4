@@ -7,6 +7,8 @@ fi
 
 ruby -e '
 %w{go
+openssl
+curl --with-openssl
 sqlite
 vim
 libarchive
