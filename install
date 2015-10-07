@@ -16,22 +16,22 @@ fi
 
 # Backup
 if [ -f $HOME/.bash_profile ]; then
-  cp $HOME/.bash_profile $HOME/.bash_profile.orig
+  mv $HOME/.bash_profile $HOME/.bash_profile.orig
 fi
 if [ -f $HOME/.atom ]; then
-  cp $HOME/.atom $HOME/.atom.orig
+  mv $HOME/.atom $HOME/.atom.orig
 fi
 if [ -f $HOME/.gitconfig ]; then
-  cp $HOME/.gitconfig $HOME/.gitconfig.orig
+  mv $HOME/.gitconfig $HOME/.gitconfig.orig
 fi
 if [ -f $HOME/.vim ]; then
-  cp $HOME/.vim $HOME/.vim.orig
+  mv $HOME/.vim $HOME/.vim.orig
 fi
 if [ -f $HOME/.vimrc ]; then
-  cp $HOME/.vimrc $HOME/.vimrc.orig
+  mv $HOME/.vimrc $HOME/.vimrc.orig
 fi
 if [ -f $HOME/.curlrc ]; then
-  cp $HOME/curlrc $HOME/.curlrc.org
+  mv $HOME/curlrc $HOME/.curlrc.org
 fi
 # Get readlink
 `readlink $HOME/.bash_profile | grep .dotfiles/bash_profile.sh > /dev/null`
@@ -43,4 +43,5 @@ if [ $BASH == 1 ]; then
   ln -s $HOME/.dotfiles/vim $HOME/.vim
   ln -s $HOME/.vim/vimrc $HOME/.vimrc
   ln -s $HOME/.dotfiles/curlrc $HOME/.curlrc
+  ln -s $HOME/.dotfiles/atom $HOME/.atom
 fi

@@ -6,7 +6,6 @@
   core:
     disabledPackages: [
       "vim-mode"
-      "merge-conflicts"
     ]
   editor:
     invisibles: {}
@@ -14,11 +13,15 @@
     scrollPastEnd: true
     showIndentGuide: true
     lineHeight: 1.2
-    fontSize: 10
+    showInvisibles: true
+    softWrap: true
+    useShadowDOM: false
+    zoomFontWhenCtrlScrolling: true
   minimap:
     plugins:
       "find-and-replace": true
     absoluteMode: true
   "go-plus":
-    goPath: "/Users/splug/gopath"
+    goPath: "~/code"
+    goInstallation: "/usr/local/bin/go"
   "one-dark-ui": {}

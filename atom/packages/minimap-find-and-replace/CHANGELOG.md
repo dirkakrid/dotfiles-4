@@ -1,3 +1,22 @@
+<a name="v4.3.0"></a>
+# v4.3.0 (2015-08-17)
+
+This version is a rewrite of the decorations lifecycle that relies on the `DisplayBuffer` markers events rather than accessing the find model directly.
+
+<a name="v4.2.2"></a>
+# v4.2.2 (2015-08-17)
+
+## :bug: Bug Fixes
+
+- Fix markers persisting after disabling the plugin ([083597ef](https://github.com/atom-minimap/minimap-find-and-replace/commit/083597ef0d398e40ac23ea5e2423730538d3ad9f))
+
+<a name="v4.2.1"></a>
+# v4.2.1 (2015-08-11)
+
+## :bug: Bug Fixes
+
+- Fix error raised when quickly opening search after switching tab ([36ab9382](https://github.com/atom-minimap/minimap-find-and-replace/commit/36ab938296535f301fbd56e078cb87aa3dce4fae))
+
 <a name="v4.2.0"></a>
 # v4.2.0 (2015-03-01)
 

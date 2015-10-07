@@ -40,6 +40,9 @@
     insteadOf = gh:
     insteadOf = ghub:
     insteadOf = github:
-    insteadOf = https://github.com/
+  # insteadOf = https://github.com/
     insteadOf = http://github.com/
-  insteadOf = https://github.com/
+  # insteadOf = https://github.com/
+
+[url "https://github.com/"]
+    insteadOf = http://github.com/
