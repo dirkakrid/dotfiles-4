@@ -46,3 +46,7 @@
 
 [url "https://github.com/"]
     insteadOf = http://github.com/
+
+[url "ssh://git@github.com/mikemackintosh"]
+  insteadOf = http://github.com/mikemackintosh
+  insteadOf = https://github.com/mikemackintosh

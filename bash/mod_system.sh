@@ -11,11 +11,16 @@ function ccat {
 }
 
 function randir {
-  ls | ruby -e 'puts STDIN.readlines.shuffle.first'
+    ls | ruby -e 'puts STDIN.readlines.shuffle.first'
 }
 
 # Find in file
 function fif {
     echo "Searching For: ${1}"
     find . -type f -exec grep -Hn --color $1 {} \;| sed "s/^\([^:]*\):\([^:]*\)\(.*\)$/$(printf $SPLG_PURPLE)\1$(printf $CLEAR):$(printf $SPLG_GREEN)\2$(printf $CLEAR)$(printf $SPLG_LBLUE)\3$(printf $CLEAR)/"
+}
+
+# Flush DNS on OSX boxes
+function flushdns {
+    sudo dscacheutil -flushcache
 }
