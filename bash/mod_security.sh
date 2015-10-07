@@ -1,8 +1,8 @@
 function remove_ca {
-echo "Removing ${2}"
-sudo /usr/bin/security delete-certificate \
-  -t -Z $1 \
-  /System/Library/Keychains/SystemRootCertificates.keychain
+  echo "Removing ${2}"
+  sudo /usr/bin/security delete-certificate \
+    -t -Z $1 \
+    /System/Library/Keychains/SystemRootCertificates.keychain
 }
 
 
@@ -17,6 +17,7 @@ function disable_ddaemon {
 }
 
 function disable_darwin {
+  exit 0;
   disable_dagent com.apple.AddressBook.SourceSync
   disable_dagent com.apple.AirPlayUIAgent
   disable_dagent com.apple.AOSHeartbeat
