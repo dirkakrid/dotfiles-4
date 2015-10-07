@@ -17,10 +17,10 @@ function prompt_left() {
 
 function prompt() {
     local EXIT="$?"
-    compensate=72
-    STATUS="▸ "
+    compensate=71
+    STATUS="\[$SPLG_GREEN\]▸ \[$CLEAR\]"
     if [ $EXIT != 0 ]; then
-      STATUS="\[${SPLG_RED}\]▸ \[$CLEAR\]"
+      STATUS="\[$SPLG_PINK\]▸ \[$CLEAR\]"
     fi
 
     export GOPATH="${HOME}/gopath"
