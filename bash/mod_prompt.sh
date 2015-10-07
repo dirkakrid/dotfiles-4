@@ -12,15 +12,15 @@ function prompt_left() {
   if [ $USER == 'root' ]; then
     COLOR=$SPLG_PINK
   fi
-  echo -e "\[$COLOR\]\u\[$SPLG_LGREY\] \[$SPLG_ORANGE\]$(basename \\w) $(git_branch)"
+  echo -e "\[$STATUS\]\[$COLOR\]\u\[$SPLG_LGREY\] \[$SPLG_ORANGE\]$(basename \\w) $(git_branch)"
 }
 
 function prompt() {
     local EXIT="$?"
-    compensate=79
-    STATUS="👍 "
+    compensate=72
+    STATUS="▸ "
     if [ $EXIT != 0 ]; then
-      STATUS="👎 "
+      STATUS="\[${SPLG_RED}\]▸ \[$CLEAR\]"
     fi
 
     export GOPATH="${HOME}/gopath"
@@ -43,7 +43,7 @@ function prompt() {
       PROMPT_CHAR='#'
     fi
 
-    PS1=$(printf "%*s\r%s\n\[$SPLG_DGREY\]$HOST\[$CLEAR\] \[$SPLG_PURPLE\]$PROMPT_CHAR\[$CLEAR\] " "$(($(tput cols)+${compensate}))" "\[$STATUS\] $(prompt_right)" "$(prompt_left)")
+    PS1=$(printf "%*s\r%s\n\[$SPLG_DGREY\]$HOST\[$CLEAR\] \[$SPLG_PURPLE\]$PROMPT_CHAR\[$CLEAR\] " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(prompt_left)")
 }
 PROMPT_COMMAND=prompt
 

@@ -16,7 +16,7 @@ function git_branch {
             COLOR="${SPLG_PINK}"
         fi
 
-        echo -e "${SPLG_LGREY}\302\261${COLOR}${branch}"
+        echo -e "${SPLG_LGREY}\302\261${COLOR} ${branch}"
 
     fi
 }
