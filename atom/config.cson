@@ -22,6 +22,6 @@
       "find-and-replace": true
     absoluteMode: true
   "go-plus":
-    goPath: "~/code"
+    goPath: "~/go"
     goInstallation: "/usr/local/bin/go"
   "one-dark-ui": {}

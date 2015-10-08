@@ -23,7 +23,7 @@ function prompt() {
       STATUS="\[$SPLG_PINK\]▸ \[$CLEAR\]"
     fi
 
-    export GOPATH="${HOME}/gopath"
+    export GOPATH="${HOME}/go"
     unset PATH
     PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     PATH="/usr/local/sbin:$PATH"
