@@ -24,7 +24,7 @@ function png2jpeg() {
 
 function goto() {
   echo "Switching to ${1}..."
-  TARGETS=`find ~/$GOPATH/src -name $1 -type d -maxdepth 3`
+  TARGETS=`find $GOPATH/src -name $1 -type d -maxdepth 3`
   arr=()
   while read -r line; do
    arr+=("$line")
