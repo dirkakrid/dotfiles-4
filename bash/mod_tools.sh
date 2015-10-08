@@ -24,24 +24,20 @@ function png2jpeg() {
 
 function goto() {
   echo "Switching to ${1}..."
-  TARGETS=`find $GOPATH/src -name $1 -type d -maxdepth 3`
-  arr=()
-  while read -r line; do
-   arr+=("$line")
-  done <<< $TARGETS
-
-  if [ ${#arr[@]} -eq 1 ]; then
-    cd "${arr[0]}"
+  TARGETS=($(find $GOPATH/src -name $1 -type d -maxdepth 3))
+  if [ ${#TARGETS[@]} -eq 1 ]; then
+    cd "${TARGETS[0]}"
   else
     echo -e "\nWe found more than one location matching you input.\n"
-    for i in "${!arr[@]}"; do
+    for i in "${!TARGETS[@]}"; do
       item=$(($i + 1))
-      echo "  $item: ${arr[$i]}";
+      echo "  $item: ${TARGETS[$i]}";
     done
 
     echo -en "\nPlease choose a destination: "
     read idnum
     itemnum=$(($idnum - 1))
-    cd "${arr[itemnum]}"
+    echo "Switching to ${TARGETS[itemnum]}"
+    cd "${TARGETS[itemnum]}"
   fi
 }
