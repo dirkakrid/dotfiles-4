@@ -23,9 +23,13 @@ function png2jpeg() {
 }
 
 function goto() {
-  echo "Switching to ${1}..."
+  echo -n "Switching to ${1}..."
   TARGETS=($(find $GOPATH/src -name $1 -type d -maxdepth 3))
-  if [ ${#TARGETS[@]} -eq 1 ]; then
+  TARGET_COUNT=${#TARGETS[@]}
+  if [ $TARGET_COUNT -eq 0 ]; then
+    echo " Sorr! No matching dirs"
+    return
+  elif [ $TARGET_COUNT -eq 1 ]; then
     cd "${TARGETS[0]}"
   else
     echo -e "\nWe found more than one location matching you input.\n"
