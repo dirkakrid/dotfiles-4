@@ -27,7 +27,7 @@ function goto() {
   TARGETS=($(find $GOPATH/src -name $1 -type d -maxdepth 3))
   TARGET_COUNT=${#TARGETS[@]}
   if [ $TARGET_COUNT -eq 0 ]; then
-    echo " Sorr! No matching dirs"
+    echo " Sorry! No matching dirs"
     return
   elif [ $TARGET_COUNT -eq 1 ]; then
     cd "${TARGETS[0]}"
