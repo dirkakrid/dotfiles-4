@@ -25,3 +25,5 @@
     goPath: "~/go"
     goInstallation: "/usr/local/bin/go"
   "one-dark-ui": {}
+  "atom-beautify":
+    _analyticsUserId: "17259148-f59b-46fa-a9dc-aaf60acff3bd"
