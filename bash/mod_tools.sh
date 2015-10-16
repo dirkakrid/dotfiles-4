@@ -22,6 +22,12 @@ function png2jpeg() {
  sips -s format jpeg $FILENAME --out $OUTFILE.jpg
 }
 
+# Start the docker machine instance
+function ds() {
+  eval $(docker-machine env dev)
+}
+
+# MOST AWESOMEST THING EVER
 function goto() {
   echo -n "Switching to ${1}..."
   TARGETS=($(find $GOPATH/src -name $1 -type d -maxdepth 3))
@@ -44,4 +50,9 @@ function goto() {
     echo "Switching to ${TARGETS[itemnum]}"
     cd "${TARGETS[itemnum]}"
   fi
+}
+
+# Generates A Random string, works with OS X
+function randomstring() {
+  cat /dev/urandom | LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w ${1:-10} | head -n 1
 }
