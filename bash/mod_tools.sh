@@ -38,3 +38,12 @@ function ds() {
 function randomstring() {
   cat /dev/urandom | LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w ${1:-10} | head -n 1
 }
+
+function replace() {
+  find_this="$1"
+  shift
+  replace_with="$1"
+  shift
+
+  ag -l --nocolor "$find_this" $* | xargs sed -i '' "s/$find_this/$replace_with/g"
+}
