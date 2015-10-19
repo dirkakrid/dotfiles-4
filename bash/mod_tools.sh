@@ -24,6 +24,13 @@ function png2jpeg() {
 
 # Start the docker machine instance
 function ds() {
+  IS_RUNNING=$((docker-machine ls | grep dev | grep Running > /dev/null && echo $?) || echo 1)
+  if [[ $IS_RUNNING -eq 1 ]]; then
+    echo "Starting Docker Machine..."
+    docker-machine start dev
+  fi
+
+  echo "Setting0 Docker Machine environment..."
   eval $(docker-machine env dev)
 }
 
