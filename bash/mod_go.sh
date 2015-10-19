@@ -4,7 +4,9 @@ function skelgo() {
   touch cmd/$1/${1}.go
   touch cmd/$1/${1}_test.go
   mkdir -p $1
-  touch ${1}/.gitkeep
+  touch pkg/.gitkeep
+  touch bin/.gitkeep
+  touch models/.gitkeep
   touch Makefile
   touch .gitignore
 }
