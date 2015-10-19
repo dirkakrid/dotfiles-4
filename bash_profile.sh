@@ -7,12 +7,14 @@
 #  exit
 #fi
 
+for f in $HOME/.dotfiles/bash/dsl/*_dsl.sh; do source $f; done
 for f in $HOME/.dotfiles/bash/mod_*; do source $f; done
 for f in $HOME/.private/*; do
   if [ -f $f ]; then
     source $f;
   fi
 done
+
 
 ########################################################################
 ########################################################################
