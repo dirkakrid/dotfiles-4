@@ -8,7 +8,11 @@ function reload {
 
 # If you have $PROTECTED_PATH, hide it
 function hidepath() {
-  export HIDE_PATH=$PROTECTED_PATH
+  if [[ -z $HIDE_PATH ]]; then
+    export HIDE_PATH=$PROTECTED_PATH
+    return
+  fi
+  unset HIDE_PATH
 }
 
 # Show path, opposite of hidepath
@@ -18,7 +22,7 @@ function showpath() {
 
 # Short path sumarizes your $PWD in $PROMPT
 function shortpath() {
-  if [[ $1 == "disable" ]]; then
+  if [[ ! -z $SHORTPATH ]]; then
     unset SHORTPATH
     return
   fi
