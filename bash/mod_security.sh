@@ -1,3 +1,7 @@
+function sha256 {
+  shasum -a 256 $1 | awk '{print $1}' | pbcopy
+}
+
 function remove_ca {
   echo "Removing ${2}"
   sudo /usr/bin/security delete-certificate \
