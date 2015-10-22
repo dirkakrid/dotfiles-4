@@ -33,6 +33,10 @@ fi
 if [ -f $HOME/.curlrc ]; then
   mv $HOME/curlrc $HOME/.curlrc.org
 fi
+if [ -f $HOME/.tmux.conf ]; then
+  mv $HOME/.tmux.conf $HOME/.tmux.conf.org
+fi
+
 # Get readlink
 `readlink $HOME/.bash_profile | grep .dotfiles/bash_profile.sh > /dev/null`
 BASH=$?
@@ -44,6 +48,7 @@ if [ $BASH == 1 ]; then
   ln -s $HOME/.vim/vimrc $HOME/.vimrc
   ln -s $HOME/.dotfiles/curlrc $HOME/.curlrc
   ln -s $HOME/.dotfiles/atom $HOME/.atom
+  ln -s $HOME/.dotfiles/tmux.conf $HOME/.tmux.conf
 fi
 
 source ~/.bash_profile.sh
