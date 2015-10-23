@@ -26,7 +26,6 @@ function install_osx() {
   brew_install_or_upgrade coreutils
   brew_install_or_upgrade tmate
   brew_install_or_upgrade ant
-  brew_install_or_upgrade tmux
   brew_install_or_upgrade reattach-to-user-namespace
   brew_install_or_upgrade scons
   brew_install_or_upgrade autoconf
@@ -36,6 +35,9 @@ function install_osx() {
   brew_install_or_upgrade sqlmap
   brew_install_or_upgrade nmap
 
+  brew_tap nviennot/tmate
+  brew_install_or_upgrade tmux
+  
   brew_cask_install_or_upgrade chefdk
   brew_cask_install_or_upgrade dockertoolbox
   brew_cask_install_or_upgrade little-snitch
