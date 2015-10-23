@@ -51,7 +51,7 @@ if [ $BASH == 1 ]; then
   ln -s $HOME/.dotfiles/tmux.conf $HOME/.tmux.conf
 fi
 
-source ~/.bash_profile.sh
+source ~/.bash_profile
 
 OS=`uname`
 if [[ $OS == 'Darwin' ]]; then
