@@ -9,6 +9,9 @@ function skelgo() {
   touch models/.gitkeep
   touch Makefile
   touch .gitignore
+  git init
+  git add .
+  git commit -m "created project skeleton"
 }
 
 # MOST AWESOMEST THING EVER
@@ -35,3 +38,11 @@ function goto() {
     cd "${TARGETS[itemnum]}"
   fi
 }
+
+_goto()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $( compgen -W "$(find $GOPATH/src -type d -maxdepth 3 -exec basename {} \;)" -- "$cur" ) )
+    return 0
+}
+complete -F _goto goto
