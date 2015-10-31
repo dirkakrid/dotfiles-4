@@ -1,6 +1,6 @@
 {
   "name": "language-chef",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": true,
   "description": "Atom support for Chef.",
   "repository": {
@@ -18,10 +18,10 @@
     "url": "https://github.com/darron/language-chef/issues"
   },
   "homepage": "https://github.com/darron/language-chef#readme",
-  "_id": "language-chef@0.7.0",
-  "_shasum": "f77145a6fd6dc2710653caafcba4f74b3a2b86a2",
-  "_resolved": "file:../d-11596-25856-1j59p7u/package.tgz",
-  "_from": "../d-11596-25856-1j59p7u/package.tgz",
+  "_id": "language-chef@0.8.0",
+  "_shasum": "cd64bf0c88b3b1be5994474385e11ffb4ad1e9ed",
+  "_resolved": "file:../d-115930-69096-1pzjv6x/package.tgz",
+  "_from": "../d-115930-69096-1pzjv6x/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],
