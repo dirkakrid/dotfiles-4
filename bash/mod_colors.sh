@@ -22,6 +22,15 @@ color() {
   return
 }
 
+_color()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $( compgen -W "purple pink lightblue blue red darkred lightgreen green orange grey darkgrey lightgrey" -- "$cur" ) )
+    return 0
+}
+complete -F _color color
+
+
 # Loop through colors
 showcolors() {
   for i in {0..255}; do
