@@ -29,6 +29,16 @@ function shortpath() {
   export SHORTPATH=true
 }
 
+# Short path sumarizes your $PWD in $PROMPT
+function ellipses() {
+  if [[ ! -z $PROMPT_ELIPSES ]]; then
+    unset PROMPT_ELIPSES
+    return
+  fi
+  COUNT=${1:-3}
+  export PROMPT_ELIPSES=$COUNT
+}
+
 # Sets the prompt right
 function prompt_right() {
   #echo -e "$SPLG_ORANGE[$SPLG_PINK\A$SPLG_ORANGE]"
@@ -45,16 +55,19 @@ function prompt_left() {
   fi
 
   # CurrentDIR
-  CDIR=$(echo $PWD | sed "s:$HOME:~:g")
+  CDIR=$(pwd | sed "s:$HOME:~:g")
 
   if [ ! -z $SHORTPATH ]; then
     # SHORT DIR
-    CDIR=$(echo $PWD | sed "s:${HOME}:~:" | sed "s:/\(.\)[^/]*:/\1:g" | sed "s:/[^/]*$:/$(basename $PWD):")
-  fi
-
-  # Hide path
-  if [ ! -z $HIDE_PATH ]; then
+    CDIR=$(pwd | sed "s:${HOME}:~:" | sed "s:/\(.\)[^/]*:/\1:g" | sed "s:/[^/]*$:/$(basename $PWD):")
+  elif [ ! -z $HIDE_PATH ]; then
     CDIR=$(echo $CDIR | sed "s:$HIDE_PATH:▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒:g")
+  elif [ ! -z $PROMPT_ELIPSES ]; then
+    EDIR=$(pwd | awk -F\/ '{print $(NF-2),$(NF-1),$(NF)}'| sed 's/ /\//g')
+    if [[ ${EDIR:0:1} != "/" ]]; then
+      EDIR=".../${EDIR}"
+    fi
+    CDIR=$(echo ${EDIR}/)
   fi
 
   echo -e "\[$STATUS\]\[$COLOR\]\u\[$SPLG_LGREY\] \[$SPLG_ORANGE\]$CDIR $(git_branch)"
