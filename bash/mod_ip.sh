@@ -2,10 +2,11 @@
 #
 # ip.sh
 # -> returns the IP of the specified interface
-function ip() {
+function mip() {
 
   if [[ $1 == 'p' ]]; then
-    curl icanhazip.com
+    dig +short myip.opendns.com @resolver1.opendns.com
+    #curl icanhazip.com
     return
   fi
 
@@ -15,16 +16,28 @@ function ip() {
   fi
 
   if [[ ! -z $1 ]]; then
-    ifconfig $1 | grep inet | grep -v inet6 | awk '{print $2}'
+    ipconfig getifaddr $1
     return
   fi
 
   IFACES=$(ifconfig -l)
   for i in $IFACES; do
-    IP=$(ifconfig $i | grep inet | grep -v inet6 | awk '{print $2}')
+    IP=$(ipconfig getifaddr $i)
     if [[ ! -z $IP ]]; then
       echo $(printf $SPLG_GREEN)$i$(printf $CLEAR): $IP
     fi
   done
 
 }
+
+function pip() {
+  mip p
+}
+
+_mip()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $( compgen -W "$(ifconfig -l)" -- "$cur" ) )
+    return 0
+}
+complete -F _mip mip
