@@ -6,6 +6,7 @@
   core:
     disabledPackages: [
       "vim-mode"
+      "merge-conflicts"
     ]
   editor:
     invisibles: {}
