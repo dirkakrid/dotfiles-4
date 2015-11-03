@@ -16,7 +16,8 @@ function install_osx() {
   brew_install_or_upgrade vim
   brew_install_or_upgrade libarchive
   brew_install_or_upgrade ssh-copy-id
-  brew_install_or_upgrade boot2docker
+  brew_install_or_upgrade docker-machine
+  brew_install_or_upgrade docker
   brew_install_or_upgrade awscli
   brew_install_or_upgrade jq
   brew_install_or_upgrade jp2a
