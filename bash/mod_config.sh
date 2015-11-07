@@ -11,6 +11,11 @@ function dotfiles {
   atom .
 }
 
+function private {
+  cd ~/.private
+  atom .
+}
+
 function update-dotfiles {
   cd ~/.dotfiles && git stash && git pull && reload && cd -
 }

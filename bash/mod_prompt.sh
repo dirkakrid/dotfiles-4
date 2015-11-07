@@ -50,7 +50,7 @@ function prompt_left() {
   #CPATH="$SPLG_DGREY$(dirname $PWD)/$SPLG_ORANGE$(basename $PWD)"
   #echo -e "$SPLG_LBLUE\u$SPLG_LGREY@$SPLG_DBLUE\h $SPLG_PINK[$CPATH$SPLG_PINK]"
   COLOR=$SPLG_LBLUE
-  if [ $USER == 'root' ]; then
+  if [ $UID -eq 0 ]; then
     COLOR=$SPLG_PINK
   fi
 
@@ -97,6 +97,10 @@ function prompt() {
     export PATH
 
     HOST=$(hostname)
+    if [ ! -z $SSH_CLIENT ]; then
+      HOST="${SPLG_PINK}${HOST}"
+    fi
+
     PROMPT_CHAR='$'
     if [ $USER == 'root' ]; then
       PROMPT_CHAR='#'
@@ -104,4 +108,9 @@ function prompt() {
 
     PS1=$(printf "%*s\r%s\n\[$SPLG_DGREY\]$HOST\[$CLEAR\] \[$SPLG_PURPLE\]$PROMPT_CHAR\[$CLEAR\] " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(prompt_left)")
 }
+
 PROMPT_COMMAND=prompt
+export PROMPT_COMMAND
+export -f prompt
+export -f prompt_left
+export -f prompt_right
