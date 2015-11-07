@@ -97,8 +97,8 @@ function prompt() {
     export PATH
 
     HOST=$(hostname)
-    if [ ! -z $SSH_CLIENT ]; then
-      HOST="${SPLG_PINK}${HOST}"
+    if [[ ! -z $SSH_CLIENT ]]; then
+      HOST="✿ ${SPLG_LGREY}${HOST}"
     fi
 
     PROMPT_CHAR='$'
