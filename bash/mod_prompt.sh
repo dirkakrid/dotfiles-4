@@ -6,6 +6,11 @@ function reload {
     source $HOME/.bash_profile
 }
 
+# Repeat function
+function repeat() {
+  printf "${1}%.0s" $(seq 1 $2);
+}
+
 # If you have $PROTECTED_PATH, hide it
 function hidepath() {
   if [[ -z $HIDE_PATH ]]; then
@@ -57,13 +62,13 @@ function prompt_left() {
   fi
 
   # CurrentDIR
-  CDIR=$(pwd | sed "s:$HOME:~:g")
+  CDIR="${PWD/#$HOME/~}"
 
-  if [ ! -z $SHORTPATH ]; then
+  if [ ! -z $HIDE_PATH ]; then
+    CDIR=${CDIR//$HIDE_PATH/$(repeat ▒ ${#HIDE_PATH} )}
+  elif [ ! -z $SHORTPATH ]; then
     # SHORT DIR
     CDIR=$(pwd | sed "s:${HOME}:~:" | sed "s:/\(.\)[^/]*:/\1:g" | sed "s:/[^/]*$:/$(basename $PWD):")
-  elif [ ! -z $HIDE_PATH ]; then
-    CDIR=$(echo $CDIR | sed "s:$HIDE_PATH:▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒:g")
   elif [ ! -z $PROMPT_ELIPSES ]; then
     EDIR=$(pwd | awk -F\/ '{print $(NF-2),$(NF-1),$(NF)}'| sed 's/ /\//g')
     if [[ ${EDIR:0:1} != "/" ]]; then
