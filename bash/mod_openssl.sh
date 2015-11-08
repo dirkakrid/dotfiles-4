@@ -21,5 +21,5 @@ function validate_cert {
 }
 
 function  read_cert {
-  openssl x509 -noout -text -in "${1}" 2>/dev/null
+  openssl x509 -noout -text -subject -in "${1}" 2>/dev/null
 }
