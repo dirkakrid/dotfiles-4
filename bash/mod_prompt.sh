@@ -62,7 +62,7 @@ function prompt_left() {
   fi
 
   # CurrentDIR
-  CDIR="${PWD/#$HOME/~}"
+  CDIR="${PWD/#$HOME/\~}"
 
   if [ ! -z $HIDE_PATH ]; then
     CDIR=${CDIR//$HIDE_PATH/$(repeat ▒ ${#HIDE_PATH} )}
@@ -105,7 +105,7 @@ function prompt() {
 
     HOST=$(hostname)
     if [[ ! -z $SSH_CLIENT ]]; then
-      HOST="☢${SPLG_DBLUE}${HOST}"
+      HOST="☢  ${SPLG_DBLUE}${HOST}"
     fi
 
     PROMPT_CHAR='$'
