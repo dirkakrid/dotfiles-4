@@ -51,7 +51,7 @@ function prompt_left() {
   #echo -e "$SPLG_LBLUE\u$SPLG_LGREY@$SPLG_DBLUE\h $SPLG_PINK[$CPATH$SPLG_PINK]"
   COLOR=$SPLG_LBLUE
   if [[ ! -z $SSH_CLIENT ]]; then
-    HOST="☢${SPLG_DBLUE}${HOST}"
+    HOST="☢  ${SPLG_DBLUE}${HOST}"
   elif [[ $UID -eq 0 ]]; then
     COLOR=$SPLG_PINK
   fi
