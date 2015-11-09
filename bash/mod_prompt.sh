@@ -62,7 +62,11 @@ function prompt_left() {
   fi
 
   # CurrentDIR
-  CDIR="${PWD/#$HOME/\~}"
+  if [[ $SYSTEM == "Darwin" ]]; then
+    CDIR="${PWD/#$HOME/~}"
+  else
+    CDIR="${PWD/#$HOME/\~}"
+  fi
 
   if [ ! -z $HIDE_PATH ]; then
     CDIR=${CDIR//$HIDE_PATH/$(repeat ▒ ${#HIDE_PATH} )}
@@ -116,6 +120,7 @@ function prompt() {
     PS1=$(printf "%*s\r%s\n\[$SPLG_DGREY\]$HOST\[$CLEAR\] \[$SPLG_PURPLE\]$PROMPT_CHAR\[$CLEAR\] " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(prompt_left)")
 }
 
+SYSTEM=$(uname)
 PROMPT_COMMAND=prompt
 export PROMPT_COMMAND
 export -f prompt
