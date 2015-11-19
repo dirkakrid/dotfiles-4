@@ -8,6 +8,10 @@
       "vim-mode"
       "merge-conflicts"
     ]
+    themes: [
+      "one-dark-ui"
+      "base16-tomorrow-dark-theme"
+    ]
   editor:
     invisibles: {}
     fontFamily: "Ubuntu Mono"
@@ -18,6 +22,7 @@
     softWrap: true
     useShadowDOM: false
     zoomFontWhenCtrlScrolling: true
+    fontSize: 13
   minimap:
     plugins:
       "find-and-replace": true
@@ -25,7 +30,8 @@
   "go-plus":
     goPath: "~/go"
     goInstallation: "/usr/local/bin/go"
-  "one-dark-ui": {}
+  "one-dark-ui":
+    fontSize: 11
   "atom-beautify":
     _analyticsUserId: "17259148-f59b-46fa-a9dc-aaf60acff3bd"
   "markdown-preview": {}
