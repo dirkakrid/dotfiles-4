@@ -30,7 +30,7 @@ function mip() {
 
 }
 
-function pip() {
+function pub() {
   mip p
 }
 

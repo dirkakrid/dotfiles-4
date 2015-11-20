@@ -3,19 +3,20 @@
 color() {
   echo -e "\033[0m"
   case $1 in
-    purple)     color_fg="38;5;135";;
-    pink)       color_fg="38;5;198";;
-    lightblue)  color_fg="38;5;45";;
-    blue)       color_fg="38;5;32";;
-    red)        color_fg="38;5;196";;
-    darkred)    color_fg="38;5;160";;
-    lightgreen) color_fg="38;5;156";;
-    green)      color_fg="38;5;154";;
-    orange)     color_fg="38;5;208";;
-    grey)       color_fg="38;5;242";;
-    darkgrey)   color_fg="38;5;239";;
-    lightgrey)  color_fg="38;5;249";;
-    *)          color_fg="0";;
+    purple)      color_fg="38;5;135";;
+    pink)        color_fg="38;5;198";;
+    lightblue)   color_fg="38;5;45";;
+    blue)        color_fg="38;5;32";;
+    red)         color_fg="38;5;196";;
+    darkred)     color_fg="38;5;160";;
+    lightgreen)  color_fg="38;5;156";;
+    green)       color_fg="38;5;154";;
+    orange)      color_fg="38;5;208";;
+    lightorange) color_fg="38;5;214";;
+    grey)        color_fg="38;5;242";;
+    darkgrey)    color_fg="38;5;239";;
+    lightgrey)   color_fg="38;5;249";;
+    *)           color_fg="0";;
   esac
 
   echo -e "\033[${color_fg}m"
@@ -25,7 +26,7 @@ color() {
 _color()
 {
     local cur=${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=( $( compgen -W "purple pink lightblue blue red darkred lightgreen green orange grey darkgrey lightgrey" -- "$cur" ) )
+    COMPREPLY=( $( compgen -W "purple pink lightblue blue red darkred lightgreen green orange lightorange grey darkgrey lightgrey" -- "$cur" ) )
     return 0
 }
 complete -F _color color
@@ -54,6 +55,7 @@ export SPLG_DRED="\033[38;5;160m"
 export SPLG_GREEN="\033[38;5;156m"
 export SPLG_BGREEN="\033[38;5;154m"
 export SPLG_ORANGE="\033[38;5;208m"
+export SPLG_LORANGE="\033[38;5;214m"
 export SPLG_GREY="\033[38;5;242m"
 export SPLG_DGREY="\033[38;5;239m"
 export SPLG_LGREY="\033[38;5;249m"
