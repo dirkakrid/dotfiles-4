@@ -63,6 +63,7 @@ log "Package installation complete"
 # Tap and install casks
 log "Preparing to install casks"
 ruby -e '%w{
+atom
 betterzipql
 chefdk
 firefox
