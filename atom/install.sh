@@ -1,6 +1,6 @@
 #!/bin/bash
 
-log "Preparing to Atom packages via apm"
+log "Preparing to install Atom packages via apm"
 ruby -e '%w{
 autocomplete-go
 builder-go
@@ -23,3 +23,13 @@ pretty-json
   cmd = "apm install #{c}"
   %x( #{cmd} )
 end'
+
+# If the atom config exists already, back it up
+if [[ -e ${HOME}/.atom/config.cson ]]; then
+  log "Backing up Atom configuration"
+  mv ${HOME}/.atom/config.{cson,cson.bak}
+fi
+
+# Link the local config into atom
+log "Enabling custom Atom configuration"
+ln -s ${HOME}/.dotfiles/atom/config.cson ${HOME}/.atom/config.cson
