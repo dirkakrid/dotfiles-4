@@ -30,6 +30,12 @@ function mip() {
 
 }
 
+# Spoof MAC address
+function smack() {
+  echo "Changing en0 MAC address to ${1}"
+  sudo ifconfig en0 ether $1
+}
+
 function pub() {
   mip p
 }
