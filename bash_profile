@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # Load bash and private
-#for f in $HOME/.dotfiles/bash/dsl/*_dsl.sh; do source $f; done
 for f in $HOME/.dotfiles/bash/*.sh; do source $f; done
+
+# Load all the source files
 for f in $HOME/.private/*; do
-  if [ -f $f ]; then
+  if [[ -f $f ]]; then
     source $f;
   fi
 done
