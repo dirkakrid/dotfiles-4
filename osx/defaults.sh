@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Include helpers
-source ~/.dotfiles/helpers.sh
+source $HOME/.dotfiles/helpers.sh
 
 # Set your local variables here
 if [[ -z $COMPUTER_NAME ]]; then

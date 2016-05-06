@@ -14,12 +14,12 @@ function info() {
 
 # A success will provide a green indicator at the beggining of the output
 function success() {
-  echo -e "\033[38;5;2m -> \033[0m ${@}"
+  echo -e "\033[38;5;2m -> \033[0m${@}"
 }
 
 # Error will retun a red indication at the beggining of the output
 function error() {
-  echo -e "\033[38;5;1m -> \033[0m ${@}"
+  echo -e "\033[38;5;1m -> \033[0m${@}"
 }
 
 # Used to backup files
@@ -30,6 +30,7 @@ function bkp() {
 
 # Place will backup existing files and link new ones
 function place() {
+  filename=$(basename ${1})
   source_file=$HOME/.dotfiles/$1
   log "Copying ${filename}..."
 
@@ -41,7 +42,6 @@ function place() {
   fi
 
   # Check for an existing file and backup if it exists
-  filename=$(basename ${1})
   if [[ -e ${destination} ]]; then
     bkp ${destination}
   fi

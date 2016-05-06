@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Inlcude the helper script
-source helpers.sh
+source $HOME/.dotfiles/helpers.sh
 
 # Install dotfiles
 if [ ! -d $HOME/.dotfiles ]; then
@@ -31,7 +31,11 @@ if [ $BASH == 1 ]; then
 
   # Place vim
   place vim
-  place vim/vimrc $(basename vim/vimrc)
+  place vim/vimrc vimrc
+
+  # Place git
+  place gitconfig/gitconfig gitconfig
+  place gitconfig/gitignore gitignore
 
   # Place tmux.conf
   place tmux.conf
