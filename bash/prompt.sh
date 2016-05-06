@@ -1,37 +1,10 @@
 #!/bin/bash
 
-# Reload
-function reload {
-#    source $HOME/.zshrc
-    source $HOME/.bash_profile
-}
+HIDE_CHARACTER="█"
 
 # Repeat function
 function repeat() {
   printf "${1}%.0s" $(seq 1 $2);
-}
-
-# If you have $PROTECTED_PATH, hide it
-function hidepath() {
-  if [[ -z $HIDE_PATH ]]; then
-    export HIDE_PATH=$PROTECTED_PATH
-    return
-  fi
-  unset HIDE_PATH
-}
-
-# Show path, opposite of hidepath
-function showpath() {
-  unset HIDE_PATH
-}
-
-# Short path sumarizes your $PWD in $PROMPT
-function shortpath() {
-  if [[ ! -z $SHORTPATH ]]; then
-    unset SHORTPATH
-    return
-  fi
-  export SHORTPATH=true
 }
 
 # Short path sumarizes your $PWD in $PROMPT
@@ -69,7 +42,7 @@ function prompt_left() {
   fi
 
   if [ ! -z $HIDE_PATH ]; then
-    CDIR=${CDIR//$HIDE_PATH/$(repeat x ${#HIDE_PATH} )}
+    CDIR=${CDIR//$HIDE_PATH/$(repeat $HIDE_CHARACTER ${#HIDE_PATH} )}
   elif [ ! -z $SHORTPATH ]; then
     # SHORT DIR
     CDIR=$(pwd | sed "s:${HOME}:~:" | sed "s:/\(.\)[^/]*:/\1:g" | sed "s:/[^/]*$:/$(basename $PWD):")
@@ -99,7 +72,7 @@ function root_prompt_left() {
   fi
 
   if [ ! -z $HIDE_PATH ]; then
-    CDIR=${CDIR//$HIDE_PATH/$(repeat x ${#HIDE_PATH} )}
+    CDIR=${CDIR//$HIDE_PATH/$(repeat $HIDE_CHARACTER ${#HIDE_PATH} )}
   elif [ ! -z $SHORTPATH ]; then
     # SHORT DIR
     CDIR=$(pwd | sed "s:${HOME}:~:" | sed "s:/\(.\)[^/]*:/\1:g" | sed "s:/[^/]*$:/$(basename $PWD):")
@@ -125,30 +98,26 @@ function prompt() {
       STATUS="\[$SPLG_PINK\]▸ \[$CLEAR\]"
     fi
 
-    export GOPATH="${HOME}/go"
-    unset PATH
-    PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-    PATH="/usr/local/sbin:$PATH"
-    PATH="$HOME/bin:$PATH"
-    PATH="~/Library/Android/sdk/platform-tools:$PATH"
-    PATH="/usr/local/opt/go/libexec/bin:/usr/local/bin:$PATH:${GOPATH}/bin"
-
+    # If this is .chef, add in chefdk stuff
     if [ -d ".chef" ]; then
       PATH="$HOME/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/bin:/opt/chefdk/embedded/bin:$PATH"
     fi
 
     export PATH
 
+    # E
     HOST=$(hostname)
     if [[ ! -z $SSH_CLIENT ]]; then
-      HOST="☢  ${SPLG_DBLUE}${HOST}"
+      HOST="${SPLG_DBLUE}${HOST}"
     fi
 
+    # Set the prompt Character
     PROMPT_CHAR='$'
     if [ $USER == 'root' ]; then
-      PROMPT_CHAR='#'
+      PROMPT_CHAR='${SPLG_PINK}#'
     fi
 
+    # Export PS1 and prompts
     export PS1=$(printf "%*s\r%s\n\[$SPLG_GREY\]$HOST\[$CLEAR\] \[$SPLG_PURPLE\]$PROMPT_CHAR\[$CLEAR\] " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(prompt_left)")
     export SUDO_PS1=$(printf "%*s\r%s\n\[$SPLG_DGREY\]$HOST\[$CLEAR\] \[$SPLG_PURPLE\]#\[$CLEAR\] " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(root_prompt_left)")
 }
@@ -156,7 +125,6 @@ function prompt() {
 SYSTEM=$(uname)
 PROMPT_COMMAND=prompt
 export PROMPT_COMMAND
-export -f reload
 export -f prompt
 export -f prompt_left
 export -f prompt_right
