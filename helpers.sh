@@ -32,7 +32,7 @@ function bkp() {
 function place() {
   filename=$(basename ${1})
   source_file=$HOME/.dotfiles/$1
-  log "Copying ${filename}..."
+  log "Installing ${filename}"
 
   # If we passed a destination file, use it
   # this will by the link target
@@ -40,6 +40,9 @@ function place() {
   if [[ ! -z $2 ]]; then
     destination=$HOME/.${2}
   fi
+
+  # log a message
+  success "Copying '${source_file}' to '${destination}'"
 
   # Check for an existing file and backup if it exists
   if [[ -e ${destination} ]]; then
@@ -53,4 +56,7 @@ function place() {
   else
     fail "Error placing ${filename}"
   fi
+
+  echo ""
+
 }

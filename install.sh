@@ -12,16 +12,25 @@ else
   git pull --rebase
 fi
 
-# Create private dir
-if [ ! -d "${HOME}/.private/" ]; then
-  mkdir $HOME/.private
-  touch $HOME/.private/nil
+# If we pass a module, do the love for it
+if [[ ! -z $1 ]]; then
+  log "Selective-Install"
+  place $1 $2
+  exit
 fi
 
 # Get readlink
-`readlink $HOME/.bash_profile | grep .dotfiles/bash_profile.sh > /dev/null`
+readlink $HOME/.bash_profile | grep .dotfiles/bash_profile > /dev/null
 BASH=$?
-if [ $BASH == 1 ]; then
+
+# Install if the links are not in place already
+if [[ $BASH -eq 1 ]]; then
+
+  # Create private dir
+  if [ ! -d "${HOME}/.private/" ]; then
+    mkdir $HOME/.private
+    touch $HOME/.private/nil
+  fi
 
   # Place bash_profile
   place bash_profile
@@ -34,12 +43,14 @@ if [ $BASH == 1 ]; then
   place vim/vimrc vimrc
 
   # Place git
-  place gitconfig/gitconfig gitconfig
-  place gitconfig/gitignore gitignore
+  place git/gitconfig gitconfig
+  place git/gitignore gitignore
 
   # Place tmux.conf
   place tmux.conf
 
+else
+  log "Already installed. Skipping."
 fi
 
 # Source the bash_profile we just installed
