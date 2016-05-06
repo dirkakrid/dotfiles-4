@@ -2,6 +2,7 @@
   core:
     disabledPackages: [
       "welcome"
+      "language-babel"
     ]
   editor:
     fontSize: 12
