@@ -7,6 +7,20 @@ function repeat() {
   printf "${1}%.0s" $(seq 1 $2);
 }
 
+# mark allows you to set a visual line break
+function mark() {
+  message=""
+  width=$(($(tput cols)-1))
+  if [[ ! -z $@ ]]; then
+    message=" --> $@"
+    width=$(($width-${#message}))
+  fi
+
+  echo -ne "\033[1;30;44m ${message}"
+  repeat " " $width
+  echo -ne "\033[0m"
+}
+
 # Short path sumarizes your $PWD in $PROMPT
 function ellipses() {
   if [[ ! -z $PROMPT_ELIPSES ]]; then

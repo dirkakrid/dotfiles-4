@@ -29,3 +29,4 @@ PATH="/usr/local/sbin:$PATH"
 PATH="$HOME/bin:$PATH"
 PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 PATH="/usr/local/opt/go/libexec/bin:$PATH:${GOPATH}/bin"
+export PATH
