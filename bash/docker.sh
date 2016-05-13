@@ -10,3 +10,14 @@ function ds() {
   export DOCKER_IP=$(docker-machine ip default)
   echo -n "Docker can be reached at: $DOCKER_IP"
 }
+
+# helper to restart docker machine
+function dr() {
+  docker-machine restart default
+}
+
+# Helpers to clean up docker
+function dclean(){
+  docker ps -a -f="status=exited" | awk '{print $1}' | xargs docker rm 2>/dev/null
+  docker images | grep "<none>" | awk '{print $3}' | xargs docker rmi 2>/dev/null
+}
