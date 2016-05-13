@@ -30,3 +30,13 @@ _goto()
     return 0
 }
 complete -F _goto goto
+
+# Go list deps that are not standard for the
+function golist(){
+  PROJ=$1
+  if [[ -z $1 ]]; then
+    PROJ="./..."
+  fi
+
+  go list -f '{{.Deps}}' $PROJ | tr "[" " " | tr "]" " " | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'
+}
