@@ -66,6 +66,7 @@ function goskel(){
   # Adding a main.go
   echo " --> Adding main.go"
   echo -e "package main\n\nfunc main() {\n\n}\n" > $PROJECT/main.go
+    echo -e "package main\n\nimport (\n\t\"testing\"\n)\n\nfunc TestMain(t *testing.T) {\n\n}\n" > $PROJECT/main_test.go
 
   # Creating makefile
   echo " --> Adding Makefile"
