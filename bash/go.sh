@@ -47,7 +47,7 @@ function goskel(){
   PROJECT=$1
   if [[ -z $1 ]]; then
     echo "Please provide a project name and re-run."
-    exit 1
+    return
   fi
 
   # Create directories
