@@ -40,3 +40,38 @@ function golist(){
 
   go list -f '{{.Deps}}' $PROJ | tr "[" " " | tr "]" " " | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'
 }
+
+
+# GoSkel creates a project skeleton for golang projects
+function goskel(){
+  PROJECT=$1
+  if [[ -z $1 ]]; then
+    echo "Please provide a project name and re-run."
+    exit 1
+  fi
+
+  # Create directories
+  echo "Creating $PROJECT skeleton"
+  echo " --> Adding bin, libs and testing directories"
+  mkdir -p $PROJECT/{bin,libs,testing}
+
+  # Add flatfiles
+  echo " --> Adding license, todos and readme"
+  touch $PROJECT/{TODOS,LICENSE,README.md}
+
+  # Add a gitignore
+  echo " --> Adding .gitignore"
+  echo "bin/*" > $PROJECT/.gitignore
+
+  # Adding a main.go
+  echo " --> Adding main.go"
+  echo -e "package main\n\nfunc main() {\n\n}\n" > $PROJECT/main.go
+
+  # Creating makefile
+  echo " --> Adding Makefile"
+  echo -e "all: test build\n\ntest:\n\nbuild:\n\tgo build -o bin/$PROJECT main.go" > $PROJECT/Makefile
+
+  # Return status
+  echo "Created project $PROJECT successfully."
+
+}
