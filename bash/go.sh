@@ -66,11 +66,15 @@ function goskel(){
   # Adding a main.go
   echo " --> Adding main.go"
   echo -e "package main\n\nfunc main() {\n\n}\n" > $PROJECT/main.go
-    echo -e "package main\n\nimport (\n\t\"testing\"\n)\n\nfunc TestMain(t *testing.T) {\n\n}\n" > $PROJECT/main_test.go
+  echo -e "package main\n\nimport (\n\t\"testing\"\n)\n\nfunc TestMain(t *testing.T) {\n\n}\n" > $PROJECT/main_test.go
 
   # Creating makefile
   echo " --> Adding Makefile"
   echo -e "all: test build\n\ntest:\n\nbuild:\n\tgo build -o bin/$PROJECT main.go" > $PROJECT/Makefile
+
+  # Adding Git Init
+  echo " --> Creating Git Repo"
+  (cd $PROJECT && git init)
 
   # Return status
   echo "Created project $PROJECT successfully."
