@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export EDITOR=vim
+
 # Load bash and private
 for f in $HOME/.dotfiles/bash/*.sh; do source $f; done
 
