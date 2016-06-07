@@ -1,3 +1,6 @@
+# Highlight
+alias show="highlight -O ansi"
+
 # Encrypted Zip
 function ze {
   zip -er protected.zip $2
