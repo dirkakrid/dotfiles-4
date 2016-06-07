@@ -53,7 +53,7 @@ function goskel(){
   # Create directories
   echo "Creating $PROJECT skeleton"
   echo " --> Adding bin, libs and testing directories"
-  mkdir -p $PROJECT/{bin,libs,testing}
+  mkdir -p $PROJECT/{bin,cmd,libs,testing}
 
   # Add flatfiles
   echo " --> Adding license, todos and readme"
@@ -65,12 +65,16 @@ function goskel(){
 
   # Adding a main.go
   echo " --> Adding main.go"
-  echo -e "package main\n\nfunc main() {\n\n}\n" > $PROJECT/main.go
-  echo -e "package main\n\nimport (\n\t\"testing\"\n)\n\nfunc TestMain(t *testing.T) {\n\n}\n" > $PROJECT/main_test.go
+  echo -e "package main\n\nfunc main() {\n\n}\n" | tee $PROJECT/main.go $PROJECT/cmd/$PROJECT.go > /dev/null
+  echo -e "package main\n\nimport (\n\t\"testing\"\n)\n\nfunc TestMain(t *testing.T) {\n\n}\n" | tee $PROJECT/main_test.go $PROJECT/cmd/${PROJECT}_test.go > /dev/null
 
   # Creating makefile
   echo " --> Adding Makefile"
-  echo -e "all: test build\n\ntest:\n\nbuild:\n\tgo build -o bin/$PROJECT main.go" > $PROJECT/Makefile
+  echo -e "all: test build\n\ntest:\n\nbuild:\n\tgo build -o bin/$PROJECT cmd/${PROJECT}.go" > $PROJECT/Makefile
+
+  # Adding a README
+  echo " --> Setting Readme"
+  echo -e "# ${PROJECT}\n---\n\n<DESCRIPTION>\n\n## Usage\n\n## Installation\n\n" | tee $PROJECT/README.md > /dev/null
 
   # Adding Git Init
   echo " --> Creating Git Repo"
