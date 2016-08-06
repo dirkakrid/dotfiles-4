@@ -1,4 +1,5 @@
 #!/bin/bash
+source ../helpers.sh
 
 log "Preparing to install Atom packages via apm"
 ruby -e '%w{

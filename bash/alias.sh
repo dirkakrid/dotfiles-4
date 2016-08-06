@@ -1,3 +1,7 @@
+# LL aliases
+alias ll="ls -lapG"
+alias ls="ls -pG"
+
 # Highlight
 alias show="highlight -O ansi"
 
@@ -29,4 +33,10 @@ function replace() {
   find_this="$1"
   replace_with="$2"
   ag -l --nocolor "$find_this" $* | xargs sed -i '' "s/$find_this/$replace_with/g"
+}
+
+# Pacman love..
+function pacman() {
+  echo "Wakka, Wakka, Wakka..."
+  echo -e "\n\033[1;33mᗧ\033[0m • • • \033[1;31mᗣ\033[0m  • •\n"
 }
