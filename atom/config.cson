@@ -4,7 +4,12 @@
       "welcome"
       "language-babel"
     ]
+    themes: [
+      "one-light-ui"
+      "one-light-syntax"
+    ]
   editor:
+    backUpBeforeSaving: true
     fontSize: 12
     invisibles: {}
   "exception-reporting":
