@@ -27,6 +27,7 @@ filetype plugin indent on
 
 set backspace=2 " make backspace work like most other apps
 
+autocmd vimenter * NERDTree
 
 syntax enable
 "set background=dark
@@ -40,6 +41,23 @@ filetype plugin indent on
 runtime! init/**.vim
 
 let g:go_fmt_command = "goimports"
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+
+" Start NERDTree
+autocmd VimEnter * NERDTree
+" Jump to the main window.
+autocmd VimEnter * wincmd p
 
 " Machine-local vim settings - keep this at the end
 " --------------------------
