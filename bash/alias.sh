@@ -5,6 +5,9 @@ alias ls="ls -pG"
 # Highlight
 alias show="highlight -O ansi"
 
+# Lock screen
+alias lockscreen='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
+
 # Encrypted Zip
 function ze {
   zip -er protected.zip $2
