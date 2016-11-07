@@ -59,6 +59,9 @@ autocmd VimEnter * NERDTree
 " Jump to the main window.
 autocmd VimEnter * wincmd p
 
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
 " Machine-local vim settings - keep this at the end
 " --------------------------
 silent! source ~/.vimrc.local
