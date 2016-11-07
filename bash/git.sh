@@ -24,14 +24,14 @@ function git_branch {
 # Rewrites the author in the history
 function git_rewrite_author {
   export OLD_GIT_EMAIL=$1
-  git filter-branch --env-filter '
+  git filter-branch -f --env-filter '
 CORRECT_EMAIL="m@zyp.io"
-if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+if [ "$GIT_COMMITTER_EMAIL" == "$OLD_GIT_EMAIL" ]
 then
     #export GIT_COMMITTER_NAME="$CORRECT_NAME"
     export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
 fi
-if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+if [ "$GIT_AUTHOR_EMAIL" == "$OLD_GIT_EMAIL" ]
 then
     #export GIT_AUTHOR_NAME="$CORRECT_NAME"
     export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
