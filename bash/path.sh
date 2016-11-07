@@ -20,13 +20,3 @@ function shortpath() {
   fi
   export SHORTPATH=true
 }
-
-# Set some wonderful path stuff
-export GOPATH="${HOME}/go"
-unset PATH
-PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-PATH="/usr/local/sbin:$PATH"
-PATH="$HOME/bin:$PATH"
-PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
-PATH="/usr/local/opt/go/libexec/bin:$PATH:${GOPATH}/bin"
-export PATH
