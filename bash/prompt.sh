@@ -112,11 +112,6 @@ function prompt() {
       STATUS="\[$SPLG_PINK\]▸ \[$CLEAR\]"
     fi
 
-    # If this is .chef, add in chefdk stuff
-    if [ -d ".chef" ]; then
-      PATH="$HOME/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/bin:/opt/chefdk/embedded/bin:$PATH"
-    fi
-
     export PATH
 
     # E
