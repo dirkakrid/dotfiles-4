@@ -1,11 +1,3 @@
-[user]
-		signingkey = 0x38325322
-		name = Mike Mackintosh
-		email = m@zyp.io
-
-[github]
-		user = mikemackintosh
-
 [include]
 		path = .private/git/config
 
