@@ -39,11 +39,13 @@ function prompt_right() {
 
 # Sets the prompt left
 function prompt_left() {
+  PRIMARY_COLOR=${PRIMARY_COLOR-$SPLG_GREEN}
   #CPATH="$SPLG_DGREY$(dirname $PWD)/$SPLG_ORANGE$(basename $PWD)"
   #echo -e "$SPLG_LBLUE\u$SPLG_LGREY@$SPLG_DBLUE\h $SPLG_PINK[$CPATH$SPLG_PINK]"
   COLOR=$SPLG_LBLUE
   if [[ ! -z $SSH_CLIENT ]]; then
-    COLOR=$SPLG_PURPLE
+    PRIMARY_COLOR=${SPLG_LBLUE}
+    COLOR=$SPLG_GREEN
   elif [[ $USER == 'root' ]]; then
     COLOR=$SPLG_PINK
   fi
@@ -67,8 +69,6 @@ function prompt_left() {
     fi
     CDIR=$(echo ${EDIR}/)
   fi
-
-  PRIMARY_COLOR=${PRIMARY_COLOR-$SPLG_GREEN}
 
   echo -e "\[$STATUS\]\[$COLOR\]\u\[$SPLG_LGREY\] \[$PRIMARY_COLOR\]$CDIR $(git_branch)"
 }
@@ -106,6 +106,8 @@ function root_prompt_left() {
 # Generate the prompt
 function prompt() {
     local EXIT="$?"
+    PROMPT_CHAR='$'
+
     compensate=72
     STATUS="\[$SPLG_GREEN\]▸ \[$CLEAR\]"
     if [ $EXIT != 0 ]; then
@@ -117,13 +119,13 @@ function prompt() {
     # E
     HOST=$(hostname)
     if [[ ! -z $SSH_CLIENT ]]; then
-      HOST="${SPLG_DBLUE}${HOST}"
+      HOST="${SPLG_PURPLE}${HOST}"
+      PROMPT_CHAR="${SPLG_PINK}>"
     fi
 
     # Set the prompt Character
-    PROMPT_CHAR='$'
     if [ $USER == 'root' ]; then
-      PROMPT_CHAR='${SPLG_PINK}#'
+      PROMPT_CHAR="${SPLG_PINK}#"
     fi
 
     # Export PS1 and prompts
