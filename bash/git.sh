@@ -47,8 +47,9 @@ alias gc='git clone'
 alias gs='git status'
 alias gl='git lg'
 alias commit='git commit -m'
+alias add='git add'
 
 function c {
-  MESSAGE=$1
-  git commit -m $MESSAGE
+  MESSAGE=$@
+  git commit -m "$MESSAGE"
 }
