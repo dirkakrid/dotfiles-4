@@ -8,9 +8,7 @@ function git_branch {
     else
         if [ $branch == 'master' ]; then
             COLOR="${SPLG_GREEN}"
-        elif [ $branch == 'development' ]; then
-            COLOR="${SPLG_ORANGE}"
-        elif [ $branch == 'dev' ]; then
+        elif [ $branch == 'HEAD' ]; then
             COLOR="${SPLG_ORANGE}"
         else
             COLOR="${SPLG_PINK}"
